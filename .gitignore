@@ -12,4 +12,4 @@
 *.vsix
 
 # C execs
-*.exe
+./back/*.exe
