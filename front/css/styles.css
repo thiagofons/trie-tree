@@ -1,0 +1,153 @@
+@import "./resets.css";
+@import url('https://fonts.googleapis.com/css2?family=Wix+Madefor+Text:wght@400;700&display=swap');
+
+:root {
+  --white: #FFFFFF;
+  --off-white: #F8F0E3;
+
+  --light-grey: #CAD2C5;
+  --grey: #cccccc;
+  --dark-grey: #252525;
+  
+  --light-green: #84A98C;
+  --normal-green: #52796F;
+  --dark-green: #354F52;
+  --very-dark-green: #354F52;
+
+  --text-shadow: 1px 1px rgba(0,0,0,0.25);
+  --box-shadow: 0 .1rem .1rem rgba(0,0,0,.5);
+}
+
+body {
+  background-color: var(--light-grey);
+  font-family: "Wix Madefor Text", sans-serif;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+header {
+  display: flex;
+  text-align: center;
+}
+header, .nav {
+  width: 100%;
+}
+.nav {
+  color: var(--white);
+  text-shadow: var(--text-shadow);
+  background-color: var(--normal-green);
+}
+.nav h1 {
+  font-size: 1.5rem;
+  padding: .5rem 0;
+  word-wrap: normal;
+}
+
+.container {
+  margin: 1rem;
+  background-color: var(--white);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border-radius: .5rem;
+  box-shadow: var(--box-shadow);
+}
+.container__header {
+  padding: 1rem 0;
+  width: 100%;
+  text-align: center;
+  background-color: var(--light-green);
+  color: var(--white);
+  text-shadow: var(--text-shadow);
+  border-top-left-radius: inherit;
+  border-top-right-radius: inherit;
+}
+.container__body {
+  display: flex;
+  flex-direction: column;
+  padding: 1rem;
+  gap: .5rem;
+  width: 100%;
+}
+
+.accounts {
+  display: flex;
+  flex-direction: column;
+  
+}
+.account__input input, .value input {
+  width: 100%;
+}
+.account__input label {
+  display: block;
+  color: var(--dark-grey);
+}
+
+.value {
+  
+}
+
+.buttons {
+  display: flex;
+  flex-direction: column;
+  gap: .25rem;
+}
+.btn {
+  width: 100%;
+  border: none;
+  
+  border-radius: .25rem;
+  color: var(--white);
+  box-shadow: var(--box-shadow);
+  padding: .5rem 0;
+}
+.exchange__btn {
+  background-color: var(--light-green);
+}
+.generate__report__btn {
+  background-color: var(--grey);
+}
+
+footer {
+  background-color: var(--normal-green);
+  color: var(--white);
+  text-shadow: var(--text-shadow);
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: .5rem;
+  gap: .25rem;
+}
+footer h3 {
+  font-weight: normal;
+  font-size: .75rem;
+}
+.team {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+} 
+.team__description {
+  font-size: .9rem;
+  display: flex;
+  width: 100%;
+  padding: 0;
+  list-style-type: none;
+  justify-content: center;
+  gap: 1rem;
+}
+.team__member {
+  align-self: center;
+  display: flex;
+  align-items: center;
+  gap: .25rem;
+} 
+.team__member img {
+  width: 1rem;
+}
+.team__member a {
+  color: var(--white);
+  text-decoration: none;
+}
