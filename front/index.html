@@ -22,25 +22,33 @@
           <h2>Account data</h2>
         </div>
 
-        <form class="container__body" action="">
+        <form class="container__body" action="" id="form">
           <div class="accounts">
             <div class="account__input">
               <label for="">from</label>
-              <input type="text" name="" id="" />
+              <input type="text" name="from" id="from" required />
             </div>
             <div class="account__input">
               <label for="">to</label>
-              <input type="text" name="" id="" />
+              <input type="text" name="from" id="to" required />
             </div>
           </div>
           <div class="value">
-            <input type="text" placeholder="value" />
+            <input type="text" placeholder="value" id="value" required />
           </div>
           <div class="buttons">
             <input type="submit" class="btn exchange__btn" value="exchange"/>
-            <input type="submit" class="btn generate__report__btn" value="generate report"/>
+            <button class="btn generate__report__btn" id="generate-report">generate report</button>
           </div>
         </form>
+      </div>
+
+      <div class="alert">
+        <!-- error and success report -->
+      </div>
+
+      <div class="report">
+        <!-- generated report -->
       </div>
     </main>
 
