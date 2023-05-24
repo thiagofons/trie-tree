@@ -4,19 +4,9 @@
 #include <stdint.h>
 #include <string.h>
 #include <assert.h>
+#include "trie.h"
 
 #define ALPHABET_SIZE 128
-
-// A node being terminal means that it represents a key in the datastructure
-// instead of just being there to support other keys.
-// This struct actually takes 16 bytes because of alignment.
-typedef struct TrieNode
-{
-    struct TrieNode **children;
-
-    // This pesky little flag adds 8 bytes because of alignment
-    bool is_terminal;
-} TrieNode;
 
 // Creates a empty non-terminal node, returns NULL on error
 TrieNode *create_trie_node()
@@ -128,8 +118,8 @@ bool is_in_trie(TrieNode *base, const char *key)
 void test_add_and_search_key()
 {
     TrieNode *trie = create_trie_node();
-    add_node(trie, "asdf");
-    assert(is_in_trie(trie, "asdf"));
+    add_node(trie, "abcd");
+    assert(is_in_trie(trie, "abcd"));
 
     assert(!is_in_trie(trie, "a"));
     assert(!is_in_trie(trie, "as"));
