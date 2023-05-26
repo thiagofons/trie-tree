@@ -4,11 +4,23 @@
 #include <stdint.h>
 #include <string.h>
 #include <assert.h>
+#include <float.h>
 #include "trie.h"
 
 #define ALPHABET_SIZE 128
 
+// Use gcc -fPIC -shared -o src/trie.so malloc_trie.c to get .so file.
+
+typedef struct TrieNode
+{
+    struct TrieNode **children;
+
+    float value;
+    bool is_terminal;
+} TrieNode;
 // Creates a empty non-terminal node, returns NULL on error
+
+struct TrieNode *main_tree;
 TrieNode *create_trie_node()
 {
     TrieNode *node = (TrieNode *)malloc(sizeof(TrieNode));
@@ -39,12 +51,13 @@ void destroy_trie_node(TrieNode *node)
 
 // Adds a teminal node that represents key, and all intermediary if necessary.
 // Returns NULL on error
-TrieNode *add_node(TrieNode *base, const char *key)
+TrieNode *add_node(TrieNode *base, const char *key, float value)
 {
     if (strlen(key) == 0)
     {
         // This node represents the key
         base->is_terminal = true;
+        base->value = value;
         return base;
     }
 
@@ -65,7 +78,7 @@ TrieNode *add_node(TrieNode *base, const char *key)
     }
 
     const char *sufix = &key[1];
-    return add_node(base->children[prefix], sufix);
+    return add_node(base->children[prefix], sufix, value);
 }
 
 // Makes the node that represents key a non-terminal
@@ -118,8 +131,8 @@ bool is_in_trie(TrieNode *base, const char *key)
 void test_add_and_search_key()
 {
     TrieNode *trie = create_trie_node();
-    add_node(trie, "abcd");
-    assert(is_in_trie(trie, "abcd"));
+    add_node(trie, "asdf", 1);
+    assert(is_in_trie(trie, "asdf"));
 
     assert(!is_in_trie(trie, "a"));
     assert(!is_in_trie(trie, "as"));
@@ -134,7 +147,7 @@ void test_add_and_search_key()
 void test_add_and_remove()
 {
     TrieNode *trie = create_trie_node();
-    add_node(trie, "asdf");
+    add_node(trie, "asdf", 1);
 
     assert(is_in_trie(trie, "asdf"));
 
@@ -150,6 +163,33 @@ void run_tests()
 {
     test_add_and_search_key();
     test_add_and_remove();
+}
+
+bool trie_start()
+{
+    main_tree = create_trie_node();
+}
+
+bool trie_add(const char *key, float value)
+{
+    add_node(main_tree, key, value);
+}
+
+bool trie_remove(const char *key)
+{
+    remove_node(main_tree, key);
+}
+
+float trie_find(const char *key)
+{
+    TrieNode *a = find_node(main_tree, key);
+    return a ? a->value : FLT_MIN;
+}
+
+bool trie_flush(const char *key)
+{
+    TrieNode *toDestroy = find_node(main_tree, key);
+    destroy_trie_node(toDestroy);
 }
 
 int main()

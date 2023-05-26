@@ -8,8 +8,8 @@
       "args": [],
       "stopAtEntry": false,
       "externalConsole": true,
-      "cwd": "c:/Users/gargu/Desktop/trie-tree",
-      "program": "c:/Users/gargu/Desktop/trie-tree/build/Debug/outDebug",
+      "cwd": "c:/Users/gargu/Desktop/trie-tree/back",
+      "program": "c:/Users/gargu/Desktop/trie-tree/back/build/Debug/outDebug",
       "MIMode": "gdb",
       "miDebuggerPath": "gdb",
       "setupCommands": [

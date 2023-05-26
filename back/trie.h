@@ -1,22 +1,11 @@
-// A node being terminal means that it represents a key in the datastructure
-// instead of just being there to support other keys.
-// This struct actually takes 16 bytes because of alignment.
-typedef struct TrieNode
-{
-    struct TrieNode **children;
+#include <stdbool.h>
 
-    // This pesky little flag adds 8 bytes because of alignment
-    bool is_terminal;
-} TrieNode;
+bool trie_start();
 
-TrieNode *create_trie_node();
+bool trie_add(const char *key, float value);
 
-void destroy_trie_node(TrieNode *node);
+bool trie_remove(const char *key);
 
-TrieNode *add_node(TrieNode *base, const char *key);
+float trie_find(const char *key);
 
-void remove_node(TrieNode *base, const char *key);
-
-TrieNode *find_node(TrieNode *base, const char *key);
-
-bool is_in_trie(TrieNode *base, const char *key);
+bool trie_flush(const char *key);
