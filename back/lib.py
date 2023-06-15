@@ -1,7 +1,7 @@
 from trie import Trie
-from os.path import abspath
 
-path = abspath("src/trie.so")
+
+path = ("src/trie.so")
 trie = Trie(path)
 
 
