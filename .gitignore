@@ -13,3 +13,6 @@
 
 # C execs
 ./back/*.exe
+
+# Pycache
+./back/__pycache__/
