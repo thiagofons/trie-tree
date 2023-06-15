@@ -1,19 +1,21 @@
 from flask import Flask, jsonify, request
-from back.lib import add, get_value
 
 app = Flask(__name__)
 
 
 # Endpoints
-@app.route()
-def transferValue(source, target, value):
-    return
+@app.route("/transaction", methods=["POST"])
+def transferValue():
+    app.logger.info(request.data)
+    return jsonify("")
 
 
-@app.route()
+@app.route("/report", methods=["POST"])
 def generateReport():
-    return
-
+    data = request.data.json()
+    app.logger.debug("teste")
+    if(data):
+        return data
 
 # Run API
 app.run(port=5000, host="localhost", debug=True)
