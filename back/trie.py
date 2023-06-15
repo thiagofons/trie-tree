@@ -86,3 +86,6 @@ class Trie:
 
     def get_json_transaction(self, index: int):
         return self.transactions[index].to_json()
+
+    def get_json_transactions(self) -> list[str]:
+        return [transaction.to_json() for transaction in self.transactions]
