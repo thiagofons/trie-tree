@@ -7,7 +7,7 @@
 #include <float.h>
 #include "trie.h"
 
-#define ALPHABET_SIZE 128
+#define ALPHABET_SIZE 127
 
 // Use gcc -fPIC -shared -o src/trie.so malloc_trie.c to get .so file.
 
