@@ -21,5 +21,6 @@ def delete(key: str):
     return trie.flush_node(key)
 
 
-print(add("abc", 10))  # tests
-print(get_value("abc"))
+print(add("a@b", 10))  # tests
+print(get_value("a@b"))
+print(trie.get_json_transaction(0))
