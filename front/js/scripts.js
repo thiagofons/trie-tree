@@ -2,26 +2,29 @@ const form = document.getElementById("form");
 const report = document.getElementById("generate-report");
 
 const sendData = (data) => {
-  fetch("<api URL>", {
+  fetch("http://localhost:5000/transaction", {
     method: "POST",
-    type: "application/json"
+    headers: {
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify(data)
   })
     .catch((err) => console.log(err));
 }
 
-const generateReport = (transaction) => {
-  let report;
+const generateReport = async (transaction) => {
 
-  fetch("<api URL>", {
-    method: "GET",
-    type: "application/json"
+  await fetch("http://localhost:5000/report", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify(transaction)
   })
     .then((data) => {
-      report = JSON.parse(data);
+      return JSON.parse(data);
     })
     .catch((err) => console.log(err))
-
-  return report;
 }
 
 form.addEventListener("submit", (e) => {
@@ -33,8 +36,8 @@ form.addEventListener("submit", (e) => {
 
   const transaction = {
     "type": "transaction",
-    "from": from.value,
-    "to": to.value,
+    "sender": from.value,
+    "receiver": to.value,
     "value": value.value
   }
 
@@ -54,10 +57,11 @@ report.addEventListener("click", (e) => {
 
   const transaction = {
     "type": "report",
-    "from": from.value,
-    "to": to.value
+    "sender": from.value,
+    "receiver": to.value
   }
-
-  generateReport(transaction);
+  
+  const reportAPI = generateReport(transaction);
+  console.log(reportAPI);
 })
 
