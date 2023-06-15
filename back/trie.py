@@ -1,4 +1,5 @@
 from ctypes import CDLL, c_bool, c_char_p, c_float
+from os.path import abspath
 import json
 
 
@@ -44,7 +45,7 @@ class Transaction(JsonCall):
 
 class Trie:
     def __init__(self, path: str) -> None:
-        self.lib = CDLL(path)
+        self.lib = CDLL(abspath(path))
 
         self.transactions: list[Transaction] = []
 
