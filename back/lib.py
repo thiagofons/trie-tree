@@ -1,7 +1,7 @@
 from trie import Trie
 
 
-path = ("src/trie.so")
+path = "src/trie.so"
 trie = Trie(path)
 
 
@@ -21,6 +21,10 @@ def delete(key: str):
     return trie.flush_node(key)
 
 
-print(add("a@b", 10))  # tests
-print(get_value("a@b"))
-print(trie.get_json_transaction(0))
+print(add("ab", 10))  # tests
+print(add("abc", 10))  # tests
+print(get_value("ab"))
+print(get_value("abc"))
+print(remove("ab"))
+print(get_value("ab"))
+print(get_value("abc"))

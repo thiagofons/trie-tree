@@ -53,7 +53,7 @@ void destroy_trie_node(TrieNode *node)
 // Returns NULL on error
 TrieNode *add_node(TrieNode *base, const char *key, float value)
 {
-    if (strlen(key) == 0)
+    if (key[0] == '\0')
     {
         // This node represents the key
         base->is_terminal = true;
@@ -85,7 +85,7 @@ TrieNode *add_node(TrieNode *base, const char *key, float value)
 // If the node doesn't exist nothing is made
 void remove_node(TrieNode *base, const char *key)
 {
-    if (strlen(key) == 0)
+    if (key[0] == '\0')
     {
         // This node represents the key
         base->is_terminal = false;
@@ -106,7 +106,7 @@ void remove_node(TrieNode *base, const char *key)
 TrieNode *find_node(TrieNode *base, const char *key)
 {
     // This node represents this key
-    if (strlen(key) == 0 && base->is_terminal)
+    if (key[0] == '\0' && base->is_terminal)
         return base;
 
     // This node doesn't have children so there is no path

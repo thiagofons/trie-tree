@@ -4,6 +4,7 @@
 !.vscode/launch.json
 !.vscode/extensions.json
 !.vscode/*.code-snippets
+'
 
 # Local History for Visual Studio Code
 .history/
@@ -12,7 +13,7 @@
 *.vsix
 
 # C execs
-./back/*.exe
+**/back/*.exe
 
 # Pycache
-./back/__pycache__/
+**/__pycache__/*.pyc
